@@ -3,9 +3,23 @@ var removeMe = document.querySelector("#remove_me");
 removeMe.onclick = function () {
     switchToPage(1);
 }
-var removeMeToo = document.querySelector("#remove_me_too");
-removeMeToo.onclick = function () {
+
+/* Back button */
+var editorBack = document.querySelector("#editor-back");
+editorBack.onclick = function () {
     switchToPage(0);
+}
+
+/* Effect button */
+var editorEffect = document.querySelector("#editor-effect");
+editorEffect.onclick = function () {
+    // todo
+}
+
+/* Share button */
+var editorShare = document.querySelector("#editor-share");
+editorShare.onclick = function () {
+    // todo
 }
 
 
