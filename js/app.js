@@ -50,9 +50,37 @@ editorEffect.onclick = function () {
 /* Share button */
 var editorShare = document.querySelector("#editor-share");
 editorShare.onclick = function () {
-    // todo
+    var canvasToShare = document.querySelector("#canvas-image");
+
+    if (hasClass(canvasToShare, "hidden")) {
+	// Current selected image is the original one, which means there is no canvas
+	// Create dummy canvas
+	var origImage = document.querySelector("#original-image");
+        canvasToShare = document.createElement("canvas");
+        canvasToShare.width = origImage.width;
+        canvasToShare.height = origImage.height;
+        // Get context and draw image
+        var canvasContext = canvasToShare.getContext("2d");
+        canvasContext.drawImage(origImage, 0, 0);
+    }
+
+    // Share canvas
+    canvasToShare.toBlob(function (blob) {
+        var sharingImage = new MozActivity({
+	    name: "share",
+	    data: {
+                type: "image/*",
+                number: 1,
+                blobs: [blob]
+	    }
+        });
+    });
 }
 
+/* Whether element has a CSS class */
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
 
 /* Switch to page $pageId
  * 0: #photo-selection
