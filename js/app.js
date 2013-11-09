@@ -82,20 +82,27 @@ function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
 
-/* Switch to page $pageId
+/* Switch to page $pageId with layout transitions
  * 0: #photo-selection
  * 1: #photo-editor
  */
 function switchToPage(pageId) {
+    /* Lock Orientation */
+    screen.mozLockOrientation("portrait");
+
     var photoSelection = document.querySelector("#photo-selection");
     var photoEditor = document.querySelector("#photo-editor");
 
     if (pageId == 0) {
 	photoEditor.classList.add("hidden");
+	photoEditor.classList.remove("animRightToCurrent");
 	photoSelection.classList.remove("hidden");
+	photoSelection.classList.add("animLeftToCurrent");
     } else {
 	photoSelection.classList.add("hidden");
+	photoSelection.classList.remove("animLeftToCurrent");
 	photoEditor.classList.remove("hidden");
+	photoEditor.classList.add("animRightToCurrent");
     }
 }
 
