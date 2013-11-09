@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
+
+    <!-- Building Blocks -->
+    <link href="css/buildingblocks/util.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/fonts.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/cross_browser.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/transitions.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/icons/styles/action_icons.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/style/action_menu.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/style/headers.css" rel="stylesheet" type="text/css">
+    <link href="css/buildingblocks/style/buttons.css" rel="stylesheet" type="text/css">
+
+    <!-- Photo Effects Library -->
+    <script language="Javascript" src="js/psxeffects.min.js"></script>
+
+    <title>My FxOS App</title>
+  </head>
+
+  <body role="application">
+
+    <!-- First screen: Photo selection -->
+    <section role="region" id="photo-selection">
+      <article>
+	<h1>Page #1</h1>
+	<br />
+	<a id="remove_me">Go to page #2</a>
+      </article>
+    </section>
+
+    <!-- Second screen: Photo editor -->
+    <section role="region" id="photo-editor" class="hidden">
+      <article>
+	<h1>Page #2</h1>
+	<br />
+	<a id="remove_me_too">Back to page #1</a>
+      </article>
+    </section>
+
+    <!-- Javascript code -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/psxeffects.helper.js"></script>
+  </body>
+</html>
