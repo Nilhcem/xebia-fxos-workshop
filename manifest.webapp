@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "name": "Xebiagram",
+  "description": "A Firefox OS photo app",
+  "launch_path": "/index.html",
+  "icons": {
+     "60": "/img/icon-60.png",
+     "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Nilhcem",
+    "url": "http://www.nilhcem.com"
+  },
+  "default_locale": "en"
+}
