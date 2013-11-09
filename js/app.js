@@ -44,7 +44,7 @@ editorBack.onclick = function () {
 /* Effect button */
 var editorEffect = document.querySelector("#editor-effect");
 editorEffect.onclick = function () {
-    // todo
+    toggleEffectSelectionDialog(true);
 }
 
 /* Share button */
@@ -69,4 +69,30 @@ function switchToPage(pageId) {
 	photoSelection.classList.add("hidden");
 	photoEditor.classList.remove("hidden");
     }
+}
+
+/* (Show | Hide) Effect Selection Dialog */
+function toggleEffectSelectionDialog(show) {
+    var effectSelection = document.querySelector("#effect-selection");
+    if (show) {
+	effectSelection.classList.remove("hidden");
+    } else {
+	effectSelection.classList.add("hidden");
+    }
+}
+
+/* Apply an effect from the original image to the canvas */
+function applyEffect(type) {
+    var orig = document.querySelector("#original-image");
+    var canvas = document.querySelector("#canvas-image");
+
+    if (type == null) {
+	orig.classList.remove("hidden");
+	canvas.classList.add("hidden");
+    } else {
+	performEffect(type, orig, canvas);
+	canvas.classList.remove("hidden");
+	orig.classList.add("hidden");
+    }
+    toggleEffectSelectionDialog(false);
 }
