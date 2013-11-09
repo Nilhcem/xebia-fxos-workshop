@@ -3,33 +3,56 @@ title: Firefox OS workshop
 layout: main
 ---
 
-<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<p>
+Dans ce workshop, vous allez créer une application à la <em>Instagram</em> permettant d'appliquer des filtres sur des photos, et de les partager.<br />
+</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h3>#00a - Premiers pas avec Firefox OS</h3>
+<p>
+<ol>
+  <li>Installez le simulateur et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
+  <li>Installez l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boilerplate</a> et lancez-la</li>
+  <li>Installez l'application <a href="https://github.com/buildingfirefoxos/Building-Blocks">Building Blocks</a> et essayez-la également</li>
+</ol>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+À la fin de cette étape, vous devriez avoir un bon aperçu de ce qui est possible de faire facilement avec Firefox OS. Vous savez également comment lancer le simulateur et installer une application<br />
+
+<h3>#00b - Création du manifest</h3>
+
+Nous allons maintenant créer une application.<br /L
+Récupérez le projet de base :
+
+<pre><code>$ git clone git@github.com:Nilhcem/xebia-fxos-workshop.git
+$ cd xebia-fxos-workshop
+$ git checkout master
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+Les fichiers de ce projet (triés par importance) :<br />
+<ul>
+  <li>index.html : La page principale de l'application, que vous aurez à modifier</li>
+  <li>js/app.js : L'endroit où vous devrez écrire votre code javascript</li>
+  <li>css/app.css : L'endroit où vous devrez mettre des règles css (si besoin)</li>
+  <li>img/ : Contient les icones de l'application. Mettez d'autres images dans ce répertoire, si besoin</li>
+  <li>css/buildingblocks : La librairie css permettant de créer des éléments graphiques au look "natif" de la plateforme</li>
+  <li>js/psxeffects*.js : Une librairie permettant d'appliquer des filtres sur une image</li>
+</ul>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+Le projet ne s'installe pas sur le simulateur car il manque le fichier <b>manifest.webapp</b>.<br /><br />
+Votre but est le suivant :<br />
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ol>
+  <li>Créez le fichier <a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest">manifest.webapp</a> en spécifiant :
+    <ul>
+      <li>Une version (1.0.0)</li>
+      <li>Un nom d'application (Xebiagram)</li>
+      <li>Une description (A firefoxOS photo app)</li>
+      <li>Le fichier de lancement (/index.html)</li>
+      <li>Les icones 60px et 128px (/img/icon-*.png)</li>
+    </ul>
+  </li>
+  <li>Installez l'application sur le simulateur</li>
+  <li>Testez la (cliquez sur les liens pour changer d'écran)</li>
+  <li>Regardez le code source (index.html, css/app.css, et js/app.js) pour bien comprendre comment s'effectue le changement d'écran</li>
+</ol>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+N'oubliez pas de vous inspirer du code source des 2 applications que vous avez téléchargé dans l'étape #00a pour créer le fichier manifest.webapp.
