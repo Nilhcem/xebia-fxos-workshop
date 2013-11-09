@@ -1,3 +1,16 @@
 .hidden {
     display: none;
 }
+
+#photo-selection-buttons {
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+}
+
+#photo-selection {
+    background-image: url('../img/camera-icon.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
