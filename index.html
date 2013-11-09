@@ -4,18 +4,16 @@ layout: main
 ---
 
 <p>
-Dans ce workshop, vous allez créer une application à la <em>Instagram</em> permettant d'appliquer des filtres sur des photos, et de les partager.<br />
+Durant ce workshop, vous allez découvrir Firefox OS, et créer une application à la <em>Instagram</em> permettant d'appliquer des filtres sur des photos pouvant être partagées.<br />
 </p>
 
 <h3>#00a - Premiers pas avec Firefox OS</h3>
 <p>
 <ol>
-  <li>Installez le simulateur et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
-  <li>Installez l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boilerplate</a> et lancez-la</li>
-  <li>Installez l'application <a href="https://github.com/buildingfirefoxos/Building-Blocks">Building Blocks</a> et essayez-la également</li>
+  <li>Installez le simulateur (<a href="https://support.mozilla.org/en-US/kb/how-set-firefox-os-desktop-build">link</a>) et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
+  <li>Installez l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boilerplate</a> et lancez la</li>
+  <li>Installez l'application <a href="https://github.com/buildingfirefoxos/Building-Blocks">Building Blocks</a> et essayez la également.</li>
 </ol>
-
-À la fin de cette étape, vous devriez avoir un bon aperçu de ce qui est possible de faire facilement avec Firefox OS. Vous savez également comment lancer le simulateur et installer une application<br />
 
 <center><img src="images/step-00a.png" /></center>
 
@@ -24,8 +22,7 @@ Dans ce workshop, vous allez créer une application à la <em>Instagram</em> per
 <h3>#00b - Création du manifest</h3>
 
 <p>
-Nous allons maintenant créer une application.<br />
-Récupérez le projet de base :
+Nous allons maintenant créer une application. Commençons par récupérer le projet de base :
 
 {% highlight bash %}
 $ git clone git@github.com:Nilhcem/xebia-fxos-workshop.git
@@ -34,35 +31,37 @@ $ git checkout master
 {% endhighlight %}
 </p>
 
-Les fichiers de ce projet (triés par importance) :<br />
+<p>
+Ce projet contient plusieurs fichiers (triés ici par importance) :<br />
 <ul>
-  <li>index.html : La page principale de l'application, que vous aurez à modifier</li>
-  <li>js/app.js : L'endroit où vous devrez écrire votre code javascript</li>
-  <li>css/app.css : L'endroit où vous devrez mettre des règles css (si besoin)</li>
-  <li>img/ : Contient les icones de l'application. Mettez d'autres images dans ce répertoire, si besoin</li>
-  <li>css/buildingblocks : La librairie css permettant de créer des éléments graphiques au look "natif" de la plateforme</li>
-  <li>js/psxeffects*.js : Une librairie permettant d'appliquer des filtres sur une image</li>
+  <li><code>index.html</code> La page principale de l'application, que vous aurez à modifier</li>
+  <li><code>js/app.js</code> L'endroit où vous devrez écrire votre code javascript</li>
+  <li><code>css/app.css</code> L'endroit où vous devrez mettre des règles css (si besoin)</li>
+  <li><code>img/</code> Contient les icones de l'application. Peut également contenir d'autre images, si nécessaire</li>
+  <li><code>css/buildingblocks</code> La librairie css permettant de créer des éléments graphiques au look "natif" de la plateforme</li>
+  <li><code>js/psxeffects*.js</code> Une librairie permettant d'appliquer des filtres sur une image</li>
 </ul>
+</p><br />
 
-Le projet ne s'installe pas sur le simulateur car il manque le fichier <b>manifest.webapp</b>.<br /><br />
+Le projet que vous venez de récupérer ne s'installe pas sur le simulateur car il manque le fichier <code>manifest.webapp</code>.<br /><br />
 Votre but est le suivant :<br />
 
 <ol>
-  <li>Créez le fichier <a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest">manifest.webapp</a> en spécifiant :
-    <ul>
-      <li>Une version (1.0.0)</li>
-      <li>Un nom d'application (Xebiagram)</li>
-      <li>Une description (A firefoxOS photo app)</li>
-      <li>Le fichier de lancement (/index.html)</li>
-      <li>Les icones 60px et 128px (/img/icon-*.png)</li>
-    </ul>
-  </li>
+  <li>Créez le fichier <a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest">manifest.webapp</a></li>
   <li>Installez l'application sur le simulateur</li>
   <li>Testez la (cliquez sur les liens pour changer d'écran)</li>
-  <li>Regardez le code source (index.html, css/app.css, et js/app.js) pour bien comprendre comment s'effectue le changement d'écran</li>
+  <li>Regardez le code source (<code>index.html</code>, <code>css/app.css</code>, et <code>js/app.js</code>) pour bien comprendre comment s'effectue le changement d'écran</li>
 </ol>
 
-N'oubliez pas de vous inspirer du code source des 2 applications que vous avez téléchargé dans l'étape #00a pour créer le fichier manifest.webapp.
+N'oubliez pas de vous inspirer du code source des deux applications que vous avez téléchargé dans l'étape #00a pour créer le fichier manifest.webapp.<br /><br />
+Dans ce manifest, vous devrez spécifier :
+<ul>
+  <li>Une version : <code>1.0.0</code></li>
+  <li>Un nom d'application : <code>Xebiagram</code></li>
+  <li>Une description : <code>A Firefox OS photo app</code></li>
+  <li>Le fichier de lancement : <code>/index.html</code></li>
+  <li>Les icones 60px et 128px : <code>/img/icon-*.png</code></li>
+</ul>
 
 <center><img src="images/step-00b.png" /></center>
 
@@ -71,10 +70,10 @@ N'oubliez pas de vous inspirer du code source des 2 applications que vous avez t
 <h3>#01 - Ajout d'un header (ActionBar)</h3>
 
 <p>
-Nous allons ajouter un header (la barre orangée en haut de l'écran) sur les 2 écrans.<br />
+Nous allons maintenant ajouter un header (la barre orangée en haut) sur chaque écran.<br />
 <ul>
   <li>Sur le premier écran, il y aura uniquement le nom de l'application.</li>
-  <li>Sur le second écran, il y aura un bouton retour (qui doit fonctionner), un libellé ("Edit photo"), et deux boutons "Edit" et "Share" (pas besoin de logique métier pour l'instant).</li>
+  <li>Sur le second écran, il y aura un bouton retour (qui doit fonctionner), un libellé ("Edit photo"), et deux boutons "Edit" et "Share" (qui n'ont pas besoin de logique métier pour l'instant).</li>
 </ul>
 
 N'hésitez pas à consulter <a href="http://buildingfirefoxos.com/building-blocks/headers.html">la documentation</a> pour savoir comment créer un header et pour choisir <a href="http://buildingfirefoxos.com/building-blocks/primary-actions.html">quelle icone</a> afficher.
@@ -87,12 +86,13 @@ N'hésitez pas à consulter <a href="http://buildingfirefoxos.com/building-block
 
 
 
-<h3>#02 - Ajout d'une Web Activity (pick image)</h3>
+<h3>#02 - Écran principal et sélection d'image</h3>
 
 <p>
+On passe aux choses sérieuses !<br />
 Le but de cette étape est d'ajouter un bouton "Pick image" qui lancera une Web Activity permettant à l'utilisateur de sélectionner une image.<br />
-Une fois l'image sélectionnée, l'application doit passer automatiquement à l'écran #2 et afficher l'image.<br />
-Sur le premier écran, il y aura aussi un bouton "About" qui affichera une dialog (<a href="http://www.w3schools.com/jsref/met_win_alert.asp">un simple alert</a> contenant le texte : "Hands-on Firefox OS\nXKE 2013").<br /><br />
+Une fois l'image sélectionnée, l'application doit passer automatiquement à l'écran #2 et afficher l'image choisie.<br />
+Sur le premier écran, il y aura également un bouton "About" qui affichera une dialog (<a href="http://www.w3schools.com/jsref/met_win_alert.asp">un simple alert</a>) contenant le texte que vous voulez.<br /><br />
 
 Vous devrez regarder le code source de l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefox OS Boilerplate</a> (ou <a href="https://hacks.mozilla.org/2013/01/introducing-web-activities/">la documentation officielle</a>) pour voir comment implémenter cette Web Activity.
 </p>
@@ -106,10 +106,9 @@ Vous devrez regarder le code source de l'application <a href="https://github.com
 
 
 
-<h3>#03 - Ajout d'effets visuels sur la photo</h3>
+<h3>#03 - Ajout d'effets visuels sur la photo sélectionnée</h3>
 
-<p>
-Dans le second écran de notre application, il faut maintenant afficher une <a href="http://buildingfirefoxos.com/building-blocks/action-menu.html">dialog de sélection</a> du filtre à appliquer sur la photo lorsque l'utilisateur cliquera sur le bouton "Edit" de l'ActionBar.<br />
+Lorsque l'utilisateur clique sur le bouton "Edit" dans le second écran de notre application, une <a href="http://buildingfirefoxos.com/building-blocks/action-menu.html">dialog de sélection</a> listant les filtres disponibles qui peuvent être appliqués sur la photo doit apparaître.<br /><br />
 L'utilisateur pourra choisir parmi les effets suivants :
 <ul>
   <li>sepia</li>
@@ -121,15 +120,16 @@ L'utilisateur pourra choisir parmi les effets suivants :
   <li>mirrorleft2right</li>
 </ul>
 
-Chaque action lancera une fonction qui appliquera un filtre sur une image.<br />
-La librarie appliquant un filtre à besoin d'un élément <code>&lt;canvas&gt;</code>.
-C'est cet élément qui contiendra l'image modifiée avec filtre.
-Il faut donc rajouter un tag canvas dans le 2me écran de notre application, en plus de l'élément contenant l'image de base :
+Chaque action lancera une fonction qui appliquera un filtre sur une image.<br /><br />
+
+La librarie permettant d'appliquer un filtre sur une image à besoin d'un élément <code>&lt;canvas&gt;</code>.
+C'est cet élément qui contiendra l'image modifiée avec le filtre sélectionné.
+Il faut donc rajouter un tag <code>&lt;canvas&gt;</code> dans le second écran de notre application, en plus de l'élément contenant l'image de base :
 
 {% highlight html %}
 <canvas id="canvas-image" class="hidden">Your browser does not support the HTML5 canvas tag.</canvas>
 {% endhighlight %}
-</p>
+</p><br />
 
 <p>
 L'idée est la suivante : Le 2me écran de l'application contient une <code>&lt;img&gt;</code> et un <code>&lt;canvas&gt;</code>.<br />
@@ -164,13 +164,14 @@ performEffect(type, orig, canvas);
   <img src="images/step-03b.png" />
 </center>
 
+<p>À vos claviers (et bon courage ! C'est l'étape qui prend le plus de temps, mais c'est aussi celle qui apporte le plus de valeur métier à votre application, non ?)</p>
 
 
 <h3>#04 - Partage de l'image modifiée</h3>
 
 <p>
-Il ne nous reste plus qu'à partager l'image modifiée.<br />
-Pour cela, on va encore une fois utiliser une WebActivity, et nous inspirer, de nouveau, du code de partage d'image de <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefos OS Boilerplate</a>.
+Maintenant que l'image peut être modifiée, il ne nous reste plus qu'à ajouter l'option pour pouvoir partager cette image modifiée.<br />
+Pour cela, on va utiliser une WebActivity (en s'inspirant encore une fois du code de partage d'image de <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefos OS Boilerplate</a>).<br />
 Pour tester que le tout fonctionne, essayez de partager l'image avec "Wallpaper" et cliquez sur "Set as wallpaper". Cliquez ensuite sur le bouton "Home" et admirez le résultat.
 </p>
 
@@ -184,8 +185,8 @@ Pour tester que le tout fonctionne, essayez de partager l'image avec "Wallpaper"
 <h3>#05 - Peaufiner le tout</h3>
 
 <p>
-Félicitations, vous êtes arrivé à la fin de ce hands-on.
-Vous pouvez maintenant finaliser cette application en ajoutant ce que vous voulez !
+Félicitations, vous êtes arrivé à la fin de ce hands-on.<br />
+Vous pouvez maintenant finaliser votre application en ajoutant ce que vous voulez !<br />
 Voici quelques suggestions :
 
 <ul>
