@@ -21,13 +21,17 @@
     <!-- Photo Effects Library -->
     <script language="Javascript" src="js/psxeffects.min.js"></script>
 
-    <title>My FxOS App</title>
+    <title>Xebiagram</title>
   </head>
 
   <body role="application">
 
     <!-- First screen: Photo selection -->
     <section role="region" id="photo-selection">
+      <header>
+	<h1>Xebiagram</h1>
+      </header>
+
       <article>
 	<h1>Page #1</h1>
 	<br />
@@ -37,10 +41,18 @@
 
     <!-- Second screen: Photo editor -->
     <section role="region" id="photo-editor" class="hidden">
+      <header>
+	<button id="editor-back"><span class="icon icon-back">back</span></button>
+
+	<menu type="toolbar">
+	  <button id="editor-effect"><span class="action-icon icon compose">effect</span></button>
+	  <button id="editor-share"><span class="action-icon icon email-share">share</span></button>
+	</menu>
+	<h1>Edit photo</h1>
+      </header>
+
       <article>
 	<h1>Page #2</h1>
-	<br />
-	<a id="remove_me_too">Back to page #1</a>
       </article>
     </section>
 
