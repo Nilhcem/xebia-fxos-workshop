@@ -4,14 +4,14 @@ layout: main
 ---
 
 <p>
-Durant ce workshop, vous allez découvrir Firefox OS, et créer une application similaire à <em>Instagram</em> permettant d'appliquer des filtres sur des photos pouvant être partagées.<br />
+Durant ce workshop, vous allez <a href="http://www.slideshare.net/Nilhcem/fxos">découvrir</a> Firefox OS, et créer une application similaire à <em>Instagram</em> permettant d'appliquer des filtres sur des photos.<br />
 </p>
 
 <h3>#00a - Premiers pas avec Firefox OS</h3>
 <p>
 <ol>
-  <li>Installez le simulateur (<a href="https://support.mozilla.org/en-US/kb/how-set-firefox-os-desktop-build">link</a>) et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
-  <li>Installez l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boilerplate</a> et lancez la</li>
+  <li>Installez le simulateur (<a href="https://support.mozilla.org/en-US/kb/how-set-firefox-os-desktop-build">lien</a>) et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
+  <li><a href="https://hacks.mozilla.org/2013/03/how-to-install-packaged-apps-in-firefox-os-options-and-tools/">Installez</a> l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boilerplate</a> et testez la</li>
   <li>Installez l'application <a href="https://github.com/buildingfirefoxos/Building-Blocks">Building Blocks</a> et essayez la également.</li>
 </ol>
 
@@ -122,7 +122,7 @@ L'utilisateur pourra choisir parmi les effets suivants :
 
 Chaque action lancera une fonction qui appliquera un filtre sur une image.<br /><br />
 
-La librarie permettant d'appliquer un filtre sur une image à besoin d'un élément <code>&lt;canvas&gt;</code>.
+La <a href="https://github.com/zhijie/psx">librarie</a> permettant d'appliquer un filtre sur une image à besoin d'un élément <code>&lt;canvas&gt;</code>.
 C'est cet élément qui contiendra l'image modifiée avec le filtre sélectionné.
 Il faut donc rajouter un tag <code>&lt;canvas&gt;</code> dans le second écran de notre application, en plus de l'élément contenant l'image de base :
 
@@ -132,7 +132,7 @@ Il faut donc rajouter un tag <code>&lt;canvas&gt;</code> dans le second écran d
 </p><br />
 
 <p>
-L'idée est la suivante : Le 2me écran de l'application contient une <code>&lt;img&gt;</code> et un <code>&lt;canvas&gt;</code>.<br />
+L'idée est la suivante : Le second écran de l'application contient une <code>&lt;img&gt;</code> et un <code>&lt;canvas&gt;</code>.<br />
 L'<code>&lt;img&gt;</code> contient l'image originelle, et le <code>&lt;canvas&gt;</code> contient l'image modifiée par la librairie javascript.<br />
 Au début, le <code>&lt;canvas&gt;</code> est invisible ; lorsqu'un filtre est sélectionnée il faut :
 <ul>
@@ -190,14 +190,15 @@ Vous pouvez maintenant finaliser votre application en ajoutant ce que vous voule
 Voici quelques suggestions :
 
 <ul>
-  <li>Des animations css (<a href="http://buildingfirefoxos.com/transitions/app-invokes-app.html">link</a>)</li>
-  <li>De l'internationalisation (<a href="https://hacks.mozilla.org/2013/08/localizing-firefox-os-apps/">link</a>)</li>
-  <li>Des tests fonctionnels (<a href="https://blog.mozilla.org/webqa/2013/02/07/part1-firefoxos-and-marionette/">link</a>)</li>
-  <li>Du cache (<a href="https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB">link</a>)</li>
-  <li>Des traitements en background (<a href="http://www.sitepoint.com/javascript-threading-html5-web-workers/">link</a>)</li>
+  <li>Des animations css (<a href="http://buildingfirefoxos.com/transitions/app-invokes-app.html">lien</a>)</li>
+  <li>De l'internationalisation (<a href="https://hacks.mozilla.org/2013/08/localizing-firefox-os-apps/">lien</a>)</li>
+  <li>Des tests fonctionnels (<a href="https://blog.mozilla.org/webqa/2013/02/07/part1-firefoxos-and-marionette/">lien</a>)</li>
+  <li>Du cache (<a href="https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB">lien</a>)</li>
+  <li>Des traitements en background (<a href="http://www.sitepoint.com/javascript-threading-html5-web-workers/">lien</a>)</li>
   <li>Une meilleure librairie JS de traitement d'images, compatible avec les traitements en background</li>
+  <li>Un bouton d'installation si l'app est utilisée depuis le navigateur (<a href="https://github.com/wavysandbox/install">lien</a>)</li>
   <li>Une compatibilité multi browser</li>
-  <li>Un bouton d'installation si l'app est utilisée depuis le navigateur</li>
+  <li>Locker en portrait-only (arrrrgh)</li>
   <li>Des trucs cools : volo, require js, yeoman, coffeescript, less...</li>
   <li>Une publication sur le Marketplace</li>
 </ul>
