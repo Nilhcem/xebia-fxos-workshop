@@ -10,7 +10,7 @@ Durant ce workshop, vous allez <a href="http://www.slideshare.net/Nilhcem/fxos">
 <h3>#00a - Premiers pas avec Firefox OS</h3>
 <p>
 <ol>
-  <li>Installez le simulateur (<a href="https://support.mozilla.org/en-US/kb/how-set-firefox-os-desktop-build">lien</a>) et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
+  <li><a href="https://support.mozilla.org/en-US/kb/how-set-firefox-os-desktop-build">Installez</a> le simulateur et amusez vous avec Firefox OS <em>(testez ce que vous voulez, prenez le temps de vous familiariser avec le système)</em></li>
   <li><a href="https://hacks.mozilla.org/2013/03/how-to-install-packaged-apps-in-firefox-os-options-and-tools/">Installez</a> l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Firefox OS Boilerplate</a> et testez la</li>
   <li>Installez l'application <a href="https://github.com/buildingfirefoxos/Building-Blocks">Building Blocks</a> et essayez la également.</li>
 </ol>
@@ -22,7 +22,7 @@ Durant ce workshop, vous allez <a href="http://www.slideshare.net/Nilhcem/fxos">
 <h3>#00b - Création du manifest</h3>
 
 <p>
-Nous allons maintenant créer une application. Commençons par récupérer le projet de base :
+Nous allons créer une application pour Firefox OS en partant d'un projet de base :
 
 {% highlight bash %}
 $ git clone git@github.com:Nilhcem/xebia-fxos-workshop.git
@@ -37,31 +37,21 @@ Ce projet contient plusieurs fichiers (triés ici par importance) :<br />
   <li><code>index.html</code> La page principale de l'application, que vous aurez à modifier</li>
   <li><code>js/app.js</code> L'endroit où vous devrez écrire votre code javascript</li>
   <li><code>css/app.css</code> L'endroit où vous devrez mettre des règles css (si besoin)</li>
-  <li><code>img/</code> Contient les icones de l'application. Peut également contenir d'autre images, si nécessaire</li>
+  <li><code>img/</code> Contient les icones de l'application. Peut également contenir d'autre images, si vous le souhaitez</li>
   <li><code>css/buildingblocks</code> La librairie css permettant de créer des éléments graphiques au look "natif" de la plateforme</li>
-  <li><code>js/psxeffects*.js</code> Une librairie permettant d'appliquer des filtres sur une image</li>
+  <li><code>js/psxeffects*.js</code> Une librairie (<a href="https://github.com/zhijie/psx">sources</a>) simple d'utilisation permettant d'appliquer des filtres sur une image</li>
 </ul>
-</p><br />
+</p>
 
-Le projet que vous venez de récupérer ne s'installe pas sur le simulateur car il manque le fichier <code>manifest.webapp</code>.<br /><br />
+<p>L'application que vous venez de récupérer ne s'installe pas sur le simulateur car il manque le fichier <code>manifest.webapp</code>.
 Votre but est le suivant :<br />
 
 <ol>
-  <li>Créez le fichier <a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest">manifest.webapp</a></li>
+  <li>Créez le fichier <a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest">manifest.webapp</a> <em>(aidez vous du code source des deux applications que vous avez téléchargé précédemment)</em> en spécifiant un numéro de version, un nom d'application, une description, le fichier de lancement et l'emplacement des icones 60px et 128px</li>
   <li>Installez l'application sur le simulateur</li>
-  <li>Testez la (cliquez sur les liens pour changer d'écran)</li>
-  <li>Regardez le code source (<code>index.html</code>, <code>css/app.css</code>, et <code>js/app.js</code>) pour bien comprendre comment s'effectue le changement d'écran</li>
+  <li>Testez la <em>(cliquez sur les liens pour changer d'écran et vérifiez que ça fonctionne)</em></li>
+  <li>Lisez le code source (<code>index.html</code>, <code>css/app.css</code>, et <code>js/app.js</code>) pour bien comprendre comment s'effectue le changement d'écran</li>
 </ol>
-
-N'oubliez pas de vous inspirer du code source des deux applications que vous avez téléchargé dans l'étape #00a pour créer le fichier manifest.webapp.<br /><br />
-Dans ce manifest, vous devrez spécifier :
-<ul>
-  <li>Une version : <code>1.0.0</code></li>
-  <li>Un nom d'application : <code>Xebiagram</code></li>
-  <li>Une description : <code>A Firefox OS photo app</code></li>
-  <li>Le fichier de lancement : <code>/index.html</code></li>
-  <li>Les icones 60px et 128px : <code>/img/icon-*.png</code></li>
-</ul>
 
 <center><img src="images/step-00b.png" /></center>
 
@@ -70,10 +60,10 @@ Dans ce manifest, vous devrez spécifier :
 <h3>#01 - Ajout d'un header (ActionBar)</h3>
 
 <p>
-Nous allons maintenant ajouter un header (la barre orangée en haut) sur chaque écran.<br />
+Nous allons maintenant rajouter un header <em>(la barre orangée en haut)</em> sur chaque écran.<br />
 <ul>
-  <li>Sur le premier écran, il y aura uniquement le nom de l'application.</li>
-  <li>Sur le second écran, il y aura un bouton retour (qui doit fonctionner), un libellé ("Edit photo"), et deux boutons "Edit" et "Share" (qui n'ont pas besoin de logique métier pour l'instant).</li>
+  <li>Sur le premier écran, affichez le nom de l'application</li>
+  <li>Sur le second écran, ajoutez un bouton retour <em>(et sa logique métier)</em>, un libellé ("Edit photo"), et deux boutons "Edit" et "Share" <em>(qui n'ont pas besoin de logique métier pour l'instant)</em>.</li>
 </ul>
 
 N'hésitez pas à consulter <a href="http://buildingfirefoxos.com/building-blocks/headers.html">la documentation</a> pour savoir comment créer un header et pour choisir <a href="http://buildingfirefoxos.com/building-blocks/primary-actions.html">quelle icone</a> afficher.
@@ -85,21 +75,33 @@ N'hésitez pas à consulter <a href="http://buildingfirefoxos.com/building-block
 </center>
 
 
+<h3>#02a - Ajout de boutons</h3>
 
-<h3>#02 - Écran principal et sélection d'image</h3>
+Vous pouvez maintenant :
+<ol>
+  <li> Supprimer le contenu du premier écran (le lien tout moche "Go to page #2").</li>
+  <li> Ajouter un <a href="http://buildingfirefoxos.com/building-blocks/buttons.html">bouton</a> "About" qui affichera une dialog (<a href="http://www.w3schools.com/jsref/met_win_alert.asp">un simple alert</a>) contenant le texte que vous pouvez voir sur le screenshot ci-dessous</li>
+  <li> Ajouter un autre bouton "Choose an image" sans logique métier pour l'instant</li>
+  <li> Décorer la page d'une image de fond, si vous le souhaitez (facultatif)</li>
+</ol>
+
+<center>
+  <img src="images/step-02a.png" />
+  <img src="images/step-02b.png" />
+</center>
+
+
+<h3>#02b - WebActivity : Sélection d'image</h3>
 
 <p>
-On passe aux choses sérieuses !<br />
-Le but de cette étape est d'ajouter un bouton "Pick image" qui lancera une Web Activity permettant à l'utilisateur de sélectionner une image.<br />
+On va maintenant rajouter la logique métier au bouton "Choose an image".<br />
+Lorsque l'utilisateur cliquera sur ce bouton, il faudra lancer une Web Activity de sélection d'image.<br />
 Une fois l'image sélectionnée, l'application doit passer automatiquement à l'écran #2 et afficher l'image choisie.<br />
-Sur le premier écran, il y aura également un bouton "About" qui affichera une dialog (<a href="http://www.w3schools.com/jsref/met_win_alert.asp">un simple alert</a>) contenant le texte que vous voulez.<br /><br />
 
 Vous devrez regarder le code source de l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefox OS Boilerplate</a> (ou <a href="https://hacks.mozilla.org/2013/01/introducing-web-activities/">la documentation officielle</a>) pour voir comment implémenter cette Web Activity.
 </p>
 
 <center>
-  <img src="images/step-02a.png" />
-  <img src="images/step-02b.png" />
   <img src="images/step-02c.png" />
   <img src="images/step-02d.png" />
 </center>
@@ -108,7 +110,7 @@ Vous devrez regarder le code source de l'application <a href="https://github.com
 
 <h3>#03 - Ajout d'effets visuels sur la photo sélectionnée</h3>
 
-Lorsque l'utilisateur clique sur le bouton "Edit" dans le second écran de notre application, une <a href="http://buildingfirefoxos.com/building-blocks/action-menu.html">dialog de sélection</a> listant les filtres disponibles qui peuvent être appliqués sur la photo doit apparaître.<br /><br />
+Lorsque l'utilisateur clique sur le bouton "Edit" dans le second écran de votre application, une <a href="http://buildingfirefoxos.com/building-blocks/action-menu.html">dialog de sélection</a> listant les filtres disponibles qui peuvent être appliqués sur la photo doit apparaître.<br /><br />
 L'utilisateur pourra choisir parmi les effets suivants :
 <ul>
   <li>sepia</li>
@@ -122,9 +124,9 @@ L'utilisateur pourra choisir parmi les effets suivants :
 
 Chaque action lancera une fonction qui appliquera un filtre sur une image.<br /><br />
 
-La <a href="https://github.com/zhijie/psx">librarie</a> permettant d'appliquer un filtre sur une image à besoin d'un élément <code>&lt;canvas&gt;</code>.
+La librarie permettant d'appliquer un filtre sur une image à besoin d'un élément <code>&lt;canvas&gt;</code>.
 C'est cet élément qui contiendra l'image modifiée avec le filtre sélectionné.
-Il faut donc rajouter un tag <code>&lt;canvas&gt;</code> dans le second écran de notre application, en plus de l'élément contenant l'image de base :
+Il faut donc rajouter un tag <code>&lt;canvas&gt;</code> dans le second écran de votre application, en plus de l'élément contenant l'image de base :
 
 {% highlight html %}
 <canvas id="canvas-image" class="hidden">Your browser does not support the HTML5 canvas tag.</canvas>
