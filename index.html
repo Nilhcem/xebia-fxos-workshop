@@ -22,7 +22,7 @@ Durant ce workshop, vous allez <a href="http://www.slideshare.net/Nilhcem/fxos">
 <h3>#00b - Création du manifest</h3>
 
 <p>
-Nous allons créer une application pour Firefox OS en partant d'un projet de base :
+Vous allez créer une application pour Firefox OS en partant d'un projet de base :
 
 {% highlight bash %}
 $ git clone git@github.com:Nilhcem/xebia-fxos-workshop.git
@@ -35,9 +35,9 @@ $ git checkout master
 Ce projet contient plusieurs fichiers (triés ici par importance) :<br />
 <ul>
   <li><code>index.html</code> La page principale de l'application, que vous aurez à modifier</li>
-  <li><code>js/app.js</code> L'endroit où vous devrez écrire votre code javascript</li>
-  <li><code>css/app.css</code> L'endroit où vous devrez mettre des règles css (si besoin)</li>
-  <li><code>img/</code> Contient les icones de l'application. Peut également contenir d'autre images, si vous le souhaitez</li>
+  <li><code>js/app.js</code> L'endroit où vous devrez écrire du code javascript</li>
+  <li><code>css/app.css</code> L'endroit où vous devrez mettre de nouvelles règles css (si besoin)</li>
+  <li><code>img/</code> Contient les icones de l'application.</li>
   <li><code>css/buildingblocks</code> La librairie css permettant de créer des éléments graphiques au look "natif" de la plateforme</li>
   <li><code>js/psxeffects*.js</code> Une librairie (<a href="https://github.com/zhijie/psx">sources</a>) simple d'utilisation permettant d'appliquer des filtres sur une image</li>
 </ul>
@@ -53,14 +53,17 @@ Votre but est le suivant :<br />
   <li>Lisez le code source (<code>index.html</code>, <code>css/app.css</code>, et <code>js/app.js</code>) pour bien comprendre comment s'effectue le changement d'écran</li>
 </ol>
 
-<center><img src="images/step-00b.png" /></center>
+<center>
+  <img src="images/step-00b.png" />
+  <img src="images/step-00c.png" />
+</center>
 
 
 
 <h3>#01 - Ajout d'un header (ActionBar)</h3>
 
 <p>
-Nous allons maintenant rajouter un header <em>(la barre orangée en haut)</em> sur chaque écran.<br />
+Vous allez maintenant rajouter un header <em>(la barre orangée en haut)</em> sur chaque écran.<br />
 <ul>
   <li>Sur le premier écran, affichez le nom de l'application</li>
   <li>Sur le second écran, ajoutez un bouton retour <em>(et sa logique métier)</em>, un libellé ("Edit photo"), et deux boutons "Edit" et "Share" <em>(qui n'ont pas besoin de logique métier pour l'instant)</em>.</li>
@@ -98,7 +101,7 @@ On va maintenant rajouter la logique métier au bouton "Choose an image".<br />
 Lorsque l'utilisateur cliquera sur ce bouton, il faudra lancer une Web Activity de sélection d'image.<br />
 Une fois l'image sélectionnée, l'application doit passer automatiquement à l'écran #2 et afficher l'image choisie.<br />
 
-Vous devrez regarder le code source de l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefox OS Boilerplate</a> (ou <a href="https://hacks.mozilla.org/2013/01/introducing-web-activities/">la documentation officielle</a>) pour voir comment implémenter cette Web Activity.
+Vous devrez regarder le code source de l'application <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefox OS Boilerplate</a> (ou <a href="https://hacks.mozilla.org/2013/01/introducing-web-activities/">la documentation officielle</a>) pour savoir comment implémenter cette Web Activity.
 </p>
 
 <center>
@@ -107,10 +110,10 @@ Vous devrez regarder le code source de l'application <a href="https://github.com
 </center>
 
 
+<h3>#03a - Une dialogue de sélection</h3>
 
-<h3>#03 - Ajout d'effets visuels sur la photo sélectionnée</h3>
-
-Lorsque l'utilisateur clique sur le bouton "Edit" dans le second écran de votre application, une <a href="http://buildingfirefoxos.com/building-blocks/action-menu.html">dialog de sélection</a> listant les filtres disponibles qui peuvent être appliqués sur la photo doit apparaître.<br /><br />
+Vous allez maintenant rajouter de la logique métier au bouton "Edit" situé dans la barre de header du second écran de votre application.<br />
+Lorsque l'utilisateur cliquera sur ce bouton, une <a href="http://buildingfirefoxos.com/building-blocks/action-menu.html">dialogue de sélection</a> listant les effets disponibles pouvant être appliqués sur la photo doit apparaître.<br /><br />
 L'utilisateur pourra choisir parmi les effets suivants :
 <ul>
   <li>sepia</li>
@@ -122,39 +125,50 @@ L'utilisateur pourra choisir parmi les effets suivants :
   <li>mirrorleft2right</li>
 </ul>
 
-Chaque action lancera une fonction qui appliquera un filtre sur une image.<br /><br />
+Lorsque l'utilisateur cliquera sur un élément de cette liste, il faudra cacher cette liste et éxécuter du code Javascript pour appliquer un effet visuel à la photo.<br />
+Contentez vous, dans cette étape, de cacher la liste quand un élément est sélectionné.<br />
+Vous implémenterez la logique appliquant des effets visuels dans l'étape suivante.
 
-La librarie permettant d'appliquer un filtre sur une image à besoin d'un élément <code>&lt;canvas&gt;</code>.
-C'est cet élément qui contiendra l'image modifiée avec le filtre sélectionné.
-Il faut donc rajouter un tag <code>&lt;canvas&gt;</code> dans le second écran de votre application, en plus de l'élément contenant l'image de base :
+<center>
+  <img src="images/step-03a.png" />
+</center>
 
-{% highlight html %}
-<canvas id="canvas-image" class="hidden">Your browser does not support the HTML5 canvas tag.</canvas>
-{% endhighlight %}
-</p><br />
 
-<p>
-L'idée est la suivante : Le second écran de l'application contient une <code>&lt;img&gt;</code> et un <code>&lt;canvas&gt;</code>.<br />
-L'<code>&lt;img&gt;</code> contient l'image originelle, et le <code>&lt;canvas&gt;</code> contient l'image modifiée par la librairie javascript.<br />
-Au début, le <code>&lt;canvas&gt;</code> est invisible ; lorsqu'un filtre est sélectionnée il faut :
+
+<h3>#03b - Ajout d'effets visuels sur la photo sélectionnée</h3>
+
+Afin d'appliquer des effets sur une photo, vous allez utiliser une librairie Javascript <em>(déjà importée dans le projet)</em>.<br />
+Cette librairie a besoin de 2 éléments pour fonctionner :
 <ul>
-  <li>Cacher la dialog de sélection de filtre</li>
-  <li>Appeler une librarie JS pour faire du traitement sur l'image</li>
-  <li>Cacher l'image originale</li>
-  <li>Afficher le canvas qui a été modifié par la lib JS</li>
+  <li>une <code>&lt;img&gt;</code> <em>(que vous avez déjà)</em> et qui est l'image source</li>
+  <li>un <code>&lt;canvas&gt;</code> qui contiendra le résultat généré par la librairie.<br />La balise HTML5 <code>&lt;canvas&gt;</code> est utilisée pour dessiner des graphiques à la volée, sur une page web.</li>
 </ul>
 
-La fonction Javascript permettant d'appliquer un filtre sur une image à la définition suivante :
+
+Commencez par rajouter un <code>&lt;canvas&gt;</code> dans le code html du second écran de votre application :
+{% highlight html %}
+<canvas id="canvas-image" class="hidden">Your browser does not support the HTML5 canvas tag.</canvas>
+{% endhighlight %}<br />
+
+Par défaut, le <code>&lt;canvas&gt;</code> est <code>"hidden"</code> pour n'afficher que l'image de base.<br />
+Lorsque l'utilisateur sélectionnera un filtre, vous cacherez l'image et afficherez le canvas à la place.<br /><br />
+
+La méthode Javascript permettant d'appliquer un filtre sur une image à la définition suivante :
 
 {% highlight javascript %}
 function performEffect(type, orig, canvas);
 {% endhighlight %}
+<ul>
+  <li><code>type</code> : nom de l'effet, parmi ceux listés dans l'étape #03a <em>('sepia', 'blackwhite' etc.)</em></li>
+  <li><code>orig</code> : l'élément <code>&lt;img&gt;</img></code> de votre page web contenant l'image de base</li>
+  <li><code>canvas</code> l'élément <code>&lt;canvas&gt;</code> de votre page web qui contiendra l'image générée</li>
+</ul>
 </p>
 
-Voici un exemple d'appel (ou <code>type</code> est une chaine de caractère ('sepia', 'blackwhite' etc.), <code>#original-image</code> est l'id d'une <code>&lt;img&gt;</img></code>, et <code>#canvas-image</code> l'id d'un <code>&lt;canvas&gt;</code>):
-
+Voici un exemple d'appel :
 <p>
 {% highlight javascript %}
+var type = 'sepia';
 var orig = document.querySelector("#original-image");
 var canvas = document.querySelector("#canvas-image");
 performEffect(type, orig, canvas);
@@ -162,19 +176,19 @@ performEffect(type, orig, canvas);
 </p>
 
 <center>
-  <img src="images/step-03a.png" />
   <img src="images/step-03b.png" />
+  <img src="images/step-03c.png" />
 </center>
 
-<p>À vos claviers (et bon courage ! C'est l'étape qui prend le plus de temps, mais c'est aussi celle qui apporte le plus de valeur métier à votre application, non ?)</p>
 
 
 <h3>#04 - Partage de l'image modifiée</h3>
 
 <p>
-Maintenant que l'image peut être modifiée, il ne nous reste plus qu'à ajouter l'option pour pouvoir partager cette image modifiée.<br />
-Pour cela, on va utiliser une WebActivity (en s'inspirant encore une fois du code de partage d'image de <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefos OS Boilerplate</a>).<br />
-Pour tester que le tout fonctionne, essayez de partager l'image avec "Wallpaper" et cliquez sur "Set as wallpaper". Cliquez ensuite sur le bouton "Home" et admirez le résultat.
+Votre application permet maintenant d'appliquer un effet sur une image.<br />
+La dernière étape consiste à pouvoir partager cette image.<br />
+Pour cela, vous utiliserez une WebActivity (en s'inspirant encore une fois du code de partage d'image de <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/js/webapp.js">Firefos OS Boilerplate</a>).<br />
+Afin de tester que le partage fonctionne, partagez l'image avec le "Wallpaper" et cliquez sur "Set as wallpaper". Cliquez ensuite sur le bouton "Home" pour retourner sur l'écran d'accueil de Firefox OS, et admirez le résultat.
 </p>
 
 <center>
@@ -187,20 +201,28 @@ Pour tester que le tout fonctionne, essayez de partager l'image avec "Wallpaper"
 <h3>#05 - Peaufiner le tout</h3>
 
 <p>
-Félicitations, vous êtes arrivé à la fin de ce hands-on.<br />
-Vous pouvez maintenant finaliser votre application en ajoutant ce que vous voulez !<br />
-Voici quelques suggestions :
+Félicitations, vous êtes arrivé à la fin de ce hands-on... à moins que ce ne soit que le début...<br />
+Il reste tant à découvrir sur la création d'applications HTML5 embarquées.<br />
+Si vous avez un peu de temps, voici quelques suggestions de choses à ajouter/tester pour améliorer votre application :
 
 <ul>
-  <li>Des animations css (<a href="http://buildingfirefoxos.com/transitions/app-invokes-app.html">lien</a>)</li>
+  <li>Du remote debugging (<a href="http://people.apache.org/~pmuellr/weinre/docs/latest/">lien</a>)</li>
+  <li>Des animations CSS (<a href="http://buildingfirefoxos.com/transitions/app-invokes-app.html">lien</a>)</li>
   <li>De l'internationalisation (<a href="https://hacks.mozilla.org/2013/08/localizing-firefox-os-apps/">lien</a>)</li>
+  <li>Des tests (<a href="http://qunitjs.com/">lien</a>)</li>
   <li>Des tests fonctionnels (<a href="https://blog.mozilla.org/webqa/2013/02/07/part1-firefoxos-and-marionette/">lien</a>)</li>
   <li>Du cache (<a href="https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB">lien</a>)</li>
   <li>Des traitements en background (<a href="http://www.sitepoint.com/javascript-threading-html5-web-workers/">lien</a>)</li>
-  <li>Une meilleure librairie JS de traitement d'images, compatible avec les traitements en background</li>
-  <li>Un bouton d'installation si l'app est utilisée depuis le navigateur (<a href="https://github.com/wavysandbox/install">lien</a>)</li>
-  <li>Une compatibilité multi browser</li>
-  <li>Locker en portrait-only (arrrrgh)</li>
-  <li>Des trucs cools : volo, require js, yeoman, coffeescript, less...</li>
+  <li>Un bouton d'installation, si l'app est utilisée depuis le navigateur (<a href="https://github.com/wavysandbox/install">lien</a>)</li>
+  <li>Une meilleure librairie JS de traitement d'images</li>
+  <li>Un lock de l'application en portrait seulement <em>(arrrrgh)</em></li>
   <li>Une publication sur le Marketplace</li>
-</ul>
+  <li>Une compatibilité multi navigateurs</li>
+  <li>Une compatibilité Internet Explorer 5 <em>(non, ça c'était juste pour vous faire transpirer un peu)</em></li>
+  <li>Des trucs cools : volo, grunt, require js, coffeescript, less...</li>
+  <li>D'autres trucs cools, que vous découvrirez sur le tas</li>
+</ul><br />
+
+<p style="text-align: right;">
+~Have fun~
+</p>
