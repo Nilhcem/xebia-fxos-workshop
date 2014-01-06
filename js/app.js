@@ -1,7 +1,7 @@
 /* About */
 var about = document.querySelector("#about");
 about.onclick = function () {
-    alert("Hands-on Firefox OS\nXKE 2013");
+    alert("Hands-on Firefox OS\nXKE 2014");
 }
 
 /* Choose a picture */
